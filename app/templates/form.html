@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="col-8 m-auto pt-4 pb-2 text-center"><h1>Adicionar Carro</h1></div>
+    <div class="form-group mt-2">
+        <div class="col-8 m-auto pb-2 text-center">
+            <form name="form" id="form" action="/create/" method="post">
+                {% csrf_token %}
+                <!--{{form.as_p}}-->
+                <div class="form-group ">Modelo: {{form.nome}}</div>
+                <div class="form-group">Marca: {{form.marca}}</div>
+                <div class="form-group">Cor: {{form.cor}}</div>
+                <input type="submit" class="btn btn-success" value="Salvar">
+            </form>      
+        </div>
+        <div class="col-8 m-auto pt-3 pb-2 text-center">
+            <a href="/" class="btn btn-info">Voltar</a>
+        </div>
+    </div>
+</body>
+</html>
