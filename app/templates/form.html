@@ -9,12 +9,11 @@
 </head>
 <body>
 
-    <div class="col-8 m-auto pt-4 pb-2 text-center"><h1>Adicionar Carro</h1></div>
+    <div class="col-8 m-auto pt-4 pb-2 text-center">{%if carros %}<h1>Atualizar Carro</h1>{%else%} <h1>Adicionar carro</h1>{%endif%}</div>
     <div class="form-group mt-2">
         <div class="col-8 m-auto pb-2 text-center">
-            <form name="form" id="form" action="/create/" method="post">
+            <form name="form" id="form" action="{%if carros%}/update/{{carros.id}}{% else %}/create/{%endif%}" method="post">
                 {% csrf_token %}
-                <!--{{form.as_p}}-->
                 <div class="form-group ">Modelo: {{form.nome}}</div>
                 <div class="form-group">Marca: {{form.marca}}</div>
                 <div class="form-group">Cor: {{form.cor}}</div>

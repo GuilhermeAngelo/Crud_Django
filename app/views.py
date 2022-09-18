@@ -21,3 +21,22 @@ def create(request):
 def view(request,pk):
     carros = Carro.objects.get(pk=pk)
     return render(request, 'view.html' , {'carros': carros})
+
+def edit(request,pk):
+    data = {}
+    data['carros'] =  Carro.objects.get(pk=pk)
+    data['form'] = CarrosForm(instance=data['carros'])
+    return render(request, 'form.html', data)
+
+def update(request,pk):
+    data = {}
+    data['carros'] = Carro.objects.get(pk=pk)
+    form = CarrosForm(request.POST or None, instance=data['carros'])
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+
+def delete(request,pk):
+    carros = Carro.objects.get(pk=pk)
+    carros.delete()
+    return redirect('home')
